@@ -76,9 +76,20 @@ table {
 
 }
 
+/* custom added - datatable settings */
 th, td {
     white-space: nowrap;
 }
+
+.dt-body-nowrap {
+    white-space: nowrap;
+ }
+
+ thead input {
+     width: 100%;
+ }
+
+ /* end of custom added - datatable settings */
 
 .btn-xs {
   font-size: 0.7em !important;

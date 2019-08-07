@@ -54,7 +54,6 @@ class EmployeeController extends Controller
 
     }
 
-<<<<<<< HEAD
     public function create()
     {
 
@@ -62,8 +61,6 @@ class EmployeeController extends Controller
 
     }
 
-=======
->>>>>>> 1ec2c393cf0cd750ea01967aef284f34d4a369c6
     public function store(Request $request)
     {
 
@@ -276,7 +273,6 @@ class EmployeeController extends Controller
 
     }
 
-<<<<<<< HEAD
     public function edit($empl_cde)
     {
 
@@ -389,9 +385,9 @@ class EmployeeController extends Controller
                 'workarea' => $request->get('workarea'),
                 'cost_cde' => 0,
                 'ot_group' => $request->get('ot_group'),
-                'alw_flex' => 'T',
-                'bio_reqd' => 'T',
-                'brkinreq' => 'T',
+                'alw_flex' => $request->has('alw_flex') ? 'T' : 'F',
+                'bio_reqd' => $request->has('bio_reqd') ? 'T' : 'F',
+                'brkinreq' => $request->has('brkinreq') ? 'T' : 'F',
                 'locn_cde' => $request->get('emplasgn'),
                 'shft_cde' => $request->get('shft_cde'),
                 'rest_day' => $request->get('rest_day'),
@@ -407,14 +403,14 @@ class EmployeeController extends Controller
                 'dte_eoc_' => $dte_eoc_,
                 'min_wage' => $request->get('min_wage'),
                 'pr_ot_ts' => $request->get('pr_ot_ts'),
-                'tmeinout' => 'T',
+                'tmeinout' => $request->has('tmeinout') ? 'T' : 'F',
                 'flex_typ' => '',
                 'flex_hrs' => 0.00,
                 'flex_str' => '',
                 'flex_lst' => '',
                 'alw_ot__' => $request->get('alw_ot__'),
                 'alw_nsd_' => $request->get('alw_nsd_'),
-                'compweek' => '',
+                'compweek' => $request->has('compweek') ? 'T' : 'F',
                 'alw_hol_' => $request->get('alw_hol_'),
                 'cww_days' => 0,
             ]);
@@ -498,17 +494,4 @@ class EmployeeController extends Controller
 
 
     }
-=======
-    public function edit(Employee $employee)
-    {
-        return view('employees.edit', compact('employee'));
-
-    }
-
-    // public function show(Employee $employee)
-    // {
-
-    //   return view('employees.show', compact('employee'));
-    // }
->>>>>>> 1ec2c393cf0cd750ea01967aef284f34d4a369c6
 }

@@ -15,7 +15,6 @@
 
         <form method="POST" action="/employees">
             @csrf
-<<<<<<< HEAD
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">Personal</h6>
@@ -248,100 +247,6 @@
                     <label class="form-check-label"></label>
                         <input type="checkbox" name="compweek" class="form-check-input">Compress Week
                 </div>
-=======
-            <nav>
-                <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                      <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Home</a>
-                      <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Profile</a>
-                      <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Contact</a>
-                </div>
-                  </nav>
-                  <div class="tab-content" id="nav-tabContent">
-                    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                            <div class="card shadow mb-4">
-                                    {{-- <div class="card-header py-3">
-                                        <h6 class="m-0 font-weight-bold text-primary">Add New Employee</h6>
-                                    </div> --}}
-                                    <div class="card-body">
-                                        <div class="form-row">
-                                            <div class="form-group col-md-3">
-                                                <label class="control-label" for="empl_cde">ID Number</label>
-                                            <input type="text" name="empl_cde" class="form-control" value="{{ $empl_cde }}">
-                                            </div>
-
-                                            <div class="form-group col-md-3">
-                                                <label class="control-label" for="numeric">Numeric</label>
-                                                <input type="text" name="empl_cd2" class="form-control" value="{{ $empl_cd2  }}">
-                                            </div>
-                                            <div class="form-group col-md-3">
-                                                <label class="control-label" for="alternative">Alternative ID</label>
-                                                <input type="text" name="asso_cde" class="form-control" value="{{ $asso_cde  }}">
-                                            </div>
-                                            <div class="form-group col-md-3">
-                                                <label class="control-label" for="chro_num">Biometrics ID</label>
-                                                <input type="text" name="chro_num" class="form-control" value="{{ $chro_num  }}">
-                                            </div>
-                                        </div>
-                                        <div class="form-row">
-                                            <div class="form-group col-md-6">
-                                                <label class="control-label" for="firstname">First Name</label>
-                                                <input type="text" name="frst_nme" class="form-control">
-                                            </div>
-                                            <div class="form-group col-md-6">
-                                                <label class="control-label" for="lastname">Last Name</label>
-                                                <input type="text" name="last_nme" class="form-control">
-                                            </div>
-                                        </div>
-                                        <div class="form-row">
-                                            <div class="form-group col-md-6">
-                                                <label class="control-label" for="midl_nme">Middle Name</label>
-                                                <input type="text" name="midl_nme" class="form-control">
-                                            </div>
-                                            <div class="form-group col-md-2">
-                                                <label class="control-label" for="midl_nme">MI</label>
-                                                <input type="text" name="midl_ini" class="form-control">
-                                            </div>
-                                            <div class="form-group col-md-4">
-                                                <label class="control-label" for="nickname">Nickname</label>
-                                                <input type="text" name="nickname" class="form-control">
-                                            </div>
-
-                                        </div>
-                                    <div class="form-row">
-                                        <div class="form-group col-md-2">
-                                            <label class="control-label" for="nickname">Gender</label>
-                                            <select id="sex" name="sex_____" class="form-control">
-                                                <option value=""></option>
-                                                <option value="M">Male</option>
-                                                <option value="F">Female</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group col-md-4">
-                                            <label class="control-label" for="birthday">Birthday</label>
-                                            <input type="text" name="birthday" class="form-control" id="datepicker"
-                                                placeholder="Birthday">
-                                        </div>
-                                        <div class="form-group col-md-2">
-                                            <label class="control-label" for="workstat">Work Status</label>
-                                            <select id="sex" name="workstat" class="form-control">
-                                                <option value=""></option>
-                                                <option value="A">Active</option>
-                                                <option value="R">Resigned</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <button type="submit" class="btn btn-primary">Submit</button>
-                                    </div>
-
-                                </div>
-
-                    </div>
-                    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">...</div>
-                    <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">...</div>
-                  </div>
-
->>>>>>> 1ec2c393cf0cd750ea01967aef284f34d4a369c6
 
                 <div class="form-row">
 

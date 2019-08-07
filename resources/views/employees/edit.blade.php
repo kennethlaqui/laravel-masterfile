@@ -4,21 +4,13 @@
 
 <h1 class="title">Edit Employee"</h1>
 
-<<<<<<< HEAD
 <form method="POST" action="/employees/{{ rtrim($employee->empl_cde) }}">
-=======
-<form method="POST" action="/employees/{{ $employee->empl_cde }}">
->>>>>>> 1ec2c393cf0cd750ea01967aef284f34d4a369c6
     @method('PATCH')
 
     @csrf
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-<<<<<<< HEAD
             <h6 class="m-0 font-weight-bold text-primary">Personal</h6>
-=======
-            <h6 class="m-0 font-weight-bold text-primary">Update Employee</h6>
->>>>>>> 1ec2c393cf0cd750ea01967aef284f34d4a369c6
         </div>
         <div class="card-body">
             <div class="form-row">
@@ -42,7 +34,6 @@
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
-<<<<<<< HEAD
                         <label class="control-label" for="lastname">Last Name</label>
                         <input type="text" name="last_nme" class="form-control" value="{{ rtrim($employee->last_nme) }}">
                 </div>
@@ -51,15 +42,6 @@
                     <input type="text" name="frst_nme" class="form-control" value="{{ rtrim($employee->frst_nme) }}">
                 </div>
 
-=======
-                    <label class="control-label" for="firstname">First Name</label>
-                    <input type="text" name="frst_nme" class="form-control" value="{{ rtrim($employee->frst_nme) }}">
-                </div>
-                <div class="form-group col-md-6">
-                    <label class="control-label" for="lastname">Last Name</label>
-                    <input type="text" name="last_nme" class="form-control" value="{{ rtrim($employee->last_nme) }}">
-                </div>
->>>>>>> 1ec2c393cf0cd750ea01967aef284f34d4a369c6
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
@@ -72,17 +54,12 @@
                 </div>
                 <div class="form-group col-md-4">
                     <label class="control-label" for="nickname">Nickname</label>
-<<<<<<< HEAD
                     <input type="text" name="nickname" class="form-control" value="{{ Ucfirst(strtolower(rtrim($employee->nickname))) }}">
-=======
-                    <input type="text" name="nickname" class="form-control" value="{{ rtrim($employee->nickname) }}">
->>>>>>> 1ec2c393cf0cd750ea01967aef284f34d4a369c6
                 </div>
 
             </div>
         <div class="form-row">
             <div class="form-group col-md-2">
-<<<<<<< HEAD
             <label class="control-label" for="sex_____">Gender</label>
             <select id="sex_____" name="sex_____" class="form-control">
                 <option value=""></option>
@@ -107,38 +84,7 @@
                 <label class="control-label" for="birthday">Birth Place</label>
                 <input type="text" name="birthplc" class="form-control" value="{{ Ucfirst(strtolower($employee->birthplc)) }}">
             </div>
-            {{-- <div class="form-group col-md-2">
-=======
-                <label class="control-label" for="nickname">Gender</label>
-            <select id="sex" name="sex_____" class="form-control">
-                    <option value=""></option>
-                    <option value="M">Male</option>
-                    <option value="F">Female</option>
-                </select>
-            </div>
-            <div class="form-group col-md-4">
-                <label class="control-label" for="birthday">Birthday</label>
-                <input type="text" name="birthday" class="form-control" id="datepicker"
-                    placeholder="Birthday" value="{{ $employee->birthday }}">
-            </div>
-            <div class="form-group col-md-2">
->>>>>>> 1ec2c393cf0cd750ea01967aef284f34d4a369c6
-                <label class="control-label" for="workstat">Work Status</label>
-                <select id="workstat" name="workstat" class="form-control">
-                    <option value=""></option>
-                    <option value="A">Active</option>
-<<<<<<< HEAD
-                    <option value="I">Inactive</option>
-                    <option value="R">Resigned</option>
-                    <option value="T">Retired</option>
-                    <option value="D">Deceased</option>
-                    <option value="U">Undefined</option>
-                    <option value="N">Terminate</option>
-                    <option value="O">On Call</option>
-                    <option value="L">Awol</option>
-                    <option value="E">EOC</option>
-                </select>
-            </div> --}}
+
         </div>
         <div class="form-row">
                 <div class="form-group col-md-4">
@@ -263,26 +209,25 @@
         {{-- radio-button --}}
         <div class="form-check col-md-2">
             <label class="form-check-label"></label>
-                <input type="checkbox" id ="tmeinout" name="tmeinout" class="form-check-input" {{ (isset($_POST['tmeinout'])?"value='T'":"value='F'") }} {{ (strcmp($employee->tmeinout,'T')==0)? 'checked' : ''}}>With Time-in/Out
-
-
+                <input type="checkbox" name="tmeinout" class="form-check-input" {{ (strcmp($employee->tmeinout,'T')==0)? 'checked' : ''}}>With Time-in/Out
             </div>
         <div class="form-check col-md-2">
             <label class="form-check-label"></label>
-                <input type="checkbox" name="bio_reqd" class="form-check-input" onChange="this.form.submit()" {{ (strcmp($employee->bio_reqd,'T')==0)? 'checked' : ''}}>With F/Scan
-        </div>
-        <div class="form-check col-md-2">
-            <label class="form-check-label"></label>
-                <input type="checkbox" name="alw_flex" class="form-check-input" onChange="this.form.submit()" {{ (strcmp($employee->alw_flex,'T')==0)? 'checked' : ''}}>Allow FlexiTime
+                <input type="checkbox" name="bio_reqd" class="form-check-input" {{ (strcmp($employee->bio_reqd,'T')==0)? 'checked' : ''}}>With F/Scan
 
         </div>
         <div class="form-check col-md-2">
             <label class="form-check-label"></label>
-                <input type="checkbox" name="brkinreq" class="form-check-input" onChange="this.form.submit()" {{ (strcmp($employee->brkinreq,'T')==0)? 'checked' : ''}}>Break In Required
+                <input type="checkbox" name="alw_flex" class="form-check-input" {{ (strcmp($employee->alw_flex,'T')==0)? 'checked' : ''}}>Allow FlexiTime
+
         </div>
         <div class="form-check col-md-2">
             <label class="form-check-label"></label>
-                <input type="checkbox" name="compweek" class="form-check-input" onChange="this.form.submit()" {{ (strcmp($employee->compweek,'T')==0)? 'checked' : ''}}>Compress Week
+                <input type="checkbox" name="brkinreq" class="form-check-input" {{ (strcmp($employee->brkinreq,'T')==0)? 'checked' : ''}}>Break In Required
+        </div>
+        <div class="form-check col-md-2">
+            <label class="form-check-label"></label>
+                <input type="checkbox" name="compweek" class="form-check-input" {{ (strcmp($employee->compweek,'T')==0)? 'checked' : ''}}>Compress Week
         </div>
 
         <div class="form-row">
@@ -503,12 +448,6 @@
 
     </div>
 </div>
-=======
-                    <option value="R">Resigned</option>
-                </select>
-            </div>
-        </div>
->>>>>>> 1ec2c393cf0cd750ea01967aef284f34d4a369c6
 
 </form>
 
