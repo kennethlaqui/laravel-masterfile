@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\EmployeeStoreRequest;
 use App\Employee;
 use DB;
 use c_pm_generic;
@@ -61,13 +62,15 @@ class EmployeeController extends Controller
 
     }
 
-    public function store(Request $request)
+    public function store(EmployeeStoreRequest $request)
     {
 
 
         DB::beginTransaction();
 
         try{
+
+            $validated = $request->validated();
 
             // $this->validate($request, [
             //     'empl_cde' => 'required',
@@ -82,7 +85,7 @@ class EmployeeController extends Controller
             // ]);
 
             // -- reformat date to yyyy-mm-dd use for database only
-            $birthday = c_pm_generic::gf_convert_date($request->get('birthday'),2);
+            // $birthday = c_pm_generic::gf_convert_date($request->get('birthday'),2);
 
             // -- insert to common.s_empl_mst
             DB::table('common.s_empl_mst')
@@ -97,7 +100,7 @@ class EmployeeController extends Controller
                 'midl_ini' => $request->get('midl_ini'),
                 'nickname' => $request->get('nickname'),
                 'sex_____' => $request->get('sex_____'),
-                'birthday' => $birthday,
+                'birthday' => $request->get('birthday'),
                 'workstat' => $request->get('emp_stat'),
                 'payr_use' => 'T',
                 'delete__' => 'F',
@@ -169,9 +172,9 @@ class EmployeeController extends Controller
                 'workarea' => $request->get('workarea'),
                 'cost_cde' => 0,
                 'ot_group' => $request->get('ot_group'),
-                'alw_flex' => 'T',
-                'bio_reqd' => 'T',
-                'brkinreq' => 'T',
+                'alw_flex' => $request->has('alw_flex') ? 'T' : 'F',
+                'bio_reqd' => $request->has('bio_reqd') ? 'T' : 'F',
+                'brkinreq' => $request->has('brkinreq') ? 'T' : 'F',
                 'locn_cde' => $request->get('emplasgn'),
                 'shft_cde' => $request->get('shft_cde'),
                 'rest_day' => $request->get('rest_day'),
@@ -187,14 +190,14 @@ class EmployeeController extends Controller
                 'dte_eoc_' => $dte_eoc_,
                 'min_wage' => $request->get('min_wage'),
                 'pr_ot_ts' => $request->get('pr_ot_ts'),
-                'tmeinout' => 'T',
+                'tmeinout' => $request->has('tmeinout') ? 'T' : 'F',
                 'flex_typ' => '',
                 'flex_hrs' => 0.00,
                 'flex_str' => '',
                 'flex_lst' => '',
                 'alw_ot__' => $request->get('alw_ot__'),
                 'alw_nsd_' => $request->get('alw_nsd_'),
-                'compweek' => '',
+                'compweek' => $request->has('compweek') ? 'T' : 'F',
                 'alw_hol_' => $request->get('alw_hol_'),
                 'cww_days' => 0,
             ]);
@@ -426,6 +429,9 @@ class EmployeeController extends Controller
                 'philhlth' => $request->get('philhlth'),
                 'gel_numb' => '0',
             ]);
+
+
+
 
             DB::table('payroll.q_empl_pyr')
             ->where('empl_cde', $empl_cde)

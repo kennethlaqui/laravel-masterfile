@@ -37,7 +37,8 @@
 
                     </div>
                     <div class="form-group">
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            {{-- <button type="submit" class="btn btn-primary">Submit</button> --}}
+                            <input class="btn btn-primary" type="button" value="Input">
                     </div>
                 </div>
 

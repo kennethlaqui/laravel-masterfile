@@ -25,6 +25,10 @@ class PayrollController extends Controller
         ->where('cntrl_no', $day_type)
         ->value('reg_rate');
 
+        if (is_null($rate) or $rate = 0){
+            $rate = 0;
+        }
+
         $daily = $drate___ * $rate;
 
         echo $daily;
