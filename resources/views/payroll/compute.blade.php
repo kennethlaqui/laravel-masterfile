@@ -36,9 +36,16 @@
                         </div>
 
                     </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-3">
+                            <label for="mrate___">Monthly Rate</label>
+                            <input type="text" class="form-control" name="mrate___"></input>
+                        </div>
+
+                    </div>
                     <div class="form-group">
-                            {{-- <button type="submit" class="btn btn-primary">Submit</button> --}}
-                            <input class="btn btn-primary" type="button" value="Input">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                            {{-- <input class="btn btn-primary" type="button" value="Input"> --}}
                     </div>
                 </div>
 

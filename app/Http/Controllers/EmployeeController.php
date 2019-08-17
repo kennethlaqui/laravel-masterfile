@@ -12,33 +12,14 @@ use c_pm_generic;
 
 class EmployeeController extends Controller
 {
+    // -- use if you want to access specific route
+    // public function __construct(){
+    //     $this->middleware('auth')->except(['index']);
+    // }
+
+
     public function index()
     {
-        // $employees = DB::table('common.s_empl_mst', 'pims.l_emplgenr', 'pims.l_emplpers', 'payroll.q_empl_pyr', 'pims.l_shftfile', 'pims.l_grp_lvl1',
-        //                        'pims.l_workarea', 'pims.l_ot_group', 'pims.l_empl_pos', 'payroll.q_paygroup', 'pims.l_mplystat', 'pims.l_workstat')
-        // ->join('pims.l_emplgenr', 'pims.l_emplgenr.empl_cde', '=', 'common.s_empl_mst.empl_cde')
-        // ->join('pims.l_emplgovn', 'pims.l_emplgovn.empl_cde', '=', 'common.s_empl_mst.empl_cde')
-        // ->join('pims.l_emplpers', 'pims.l_emplpers.empl_cde', '=', 'common.s_empl_mst.empl_cde')
-        // ->join('payroll.q_empl_pyr', 'payroll.q_empl_pyr.empl_cde', '=', 'common.s_empl_mst.empl_cde')
-        // ->join('pims.l_shftfile', 'pims.l_shftfile.shft_cde', '=', 'pims.l_emplgenr.shft_cde')
-        // ->join('pims.l_grp_lvl1', 'pims.l_grp_lvl1.pos_code', '=', 'pims.l_emplgenr.grp_lvl1')
-        // ->join('pims.l_grp_lvl2', 'pims.l_grp_lvl2.pos_code', '=', 'pims.l_emplgenr.grp_lvl2')
-        // ->join('pims.l_grp_lvl3', 'pims.l_grp_lvl3.pos_code', '=', 'pims.l_emplgenr.grp_lvl3')
-        // ->join('pims.l_workarea', 'pims.l_workarea.cntrl_no', '=', 'pims.l_emplgenr.workarea')
-        // ->join('pims.l_ot_group', 'pims.l_ot_group.cntrl_no', '=', 'pims.l_emplgenr.ot_group')
-        // ->join('pims.l_empl_pos', 'pims.l_empl_pos.pos_code', '=', 'pims.l_emplgenr.pos_code')
-        // ->join('payroll.q_paygroup', 'payroll.q_paygroup.group_no', '=', 'payroll.q_empl_pyr.paygroup')
-        // ->join('pims.l_mplystat', 'pims.l_mplystat.cntrl_no', '=', 'pims.l_emplgenr.emp_stat')
-        // ->join('pims.l_workstat', 'pims.l_workstat.cntrl_no', '=', 'common.s_empl_mst.workstat')
-        // ->select('common.s_empl_mst.*','pims.l_emplgenr.*', 'pims.l_emplgovn.*','pims.l_emplpers.*', 'payroll.q_empl_pyr.*', 'pims.l_shftfile.std_shft',
-        //          'pims.l_grp_lvl1.descript as div_desc', 'pims.l_grp_lvl2.descript as dep_desc', 'pims.l_grp_lvl3.descript as sec_desc', 'pims.l_workarea.descript as wrk_desc',
-        //          'pims.l_ot_group.descript as ot__desc', 'pims.l_empl_pos.pos_code as position', 'payroll.q_paygroup.descript as pyg_desc', 'pims.l_mplystat.descript as mpl_desc',
-        //          'pims.l_workstat.descript as wrk_desc')
-        // ->orderBy('common.s_empl_mst.delete__', 'desc')
-        // ->orderBy('common.s_empl_mst.last_nme','asc')
-        // ->orderBy('common.s_empl_mst.frst_nme', 'asc')
-        // ->get()
-        // ->toArray();
 
         $employees = DB::table('common.s_empl_mst', 'pims.l_emplgenr', 'pims.l_emplpers', 'pims.l_emplgovn.empl_cde', 'payroll.q_empl_pyr')
         ->join('pims.l_emplgenr', 'pims.l_emplgenr.empl_cde', '=', 'common.s_empl_mst.empl_cde')
@@ -48,8 +29,6 @@ class EmployeeController extends Controller
         ->select('common.s_empl_mst.*', 'pims.l_emplgenr.*', 'pims.l_emplgovn.*', 'pims.l_emplpers.*', 'payroll.q_empl_pyr.*')
         ->get()
         ->toArray();
-
-        // dd($employees);
 
         return view('employees.index', compact('employees'));
 
@@ -65,6 +44,8 @@ class EmployeeController extends Controller
     public function store(EmployeeStoreRequest $request)
     {
 
+        // -- authorize user only can execute this
+        $this->authorize('create', Employee::class);
 
         DB::beginTransaction();
 
@@ -72,20 +53,8 @@ class EmployeeController extends Controller
 
             $validated = $request->validated();
 
-            // $this->validate($request, [
-            //     'empl_cde' => 'required',
-            //     'empl_cd2' => 'required',
-            //     'asso_cde' => 'required',
-            //     'chro_num' => 'required',
-            //     'last_nme' => 'required',
-            //     'frst_nme' => 'required',
-            //     'birthday' => 'required',
-            //     'sex_____' => 'required',
-            //     'workstat' => 'required',
-            // ]);
-
             // -- reformat date to yyyy-mm-dd use for database only
-            // $birthday = c_pm_generic::gf_convert_date($request->get('birthday'),2);
+            $birthday = c_pm_generic::gf_convert_date($request->get('birthday'),2);
 
             // -- insert to common.s_empl_mst
             DB::table('common.s_empl_mst')
@@ -100,7 +69,7 @@ class EmployeeController extends Controller
                 'midl_ini' => $request->get('midl_ini'),
                 'nickname' => $request->get('nickname'),
                 'sex_____' => $request->get('sex_____'),
-                'birthday' => $request->get('birthday'),
+                'birthday' => $birthday,
                 'workstat' => $request->get('emp_stat'),
                 'payr_use' => 'T',
                 'delete__' => 'F',

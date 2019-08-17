@@ -36,7 +36,8 @@ Route::resource('projects', 'ProjectController');
 Route::patch('/tasks/{task}', 'TaskController@update');
 Route::post('/projects/{project}/tasks', 'TaskController@store');
 
-Route::resource('employees', 'EmployeeController');
+// Route::resource('employees', 'EmployeeController');
+Route::resource('employees', 'EmployeeController')->middleware('auth');
 //Route::patch('/employees/{employee}', 'EmployeeController@update');
 
 //Route::patch('/employees/{employee}', 'EmployeeController@update');
@@ -45,6 +46,10 @@ Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 
 Route::get('/payroll', 'PayrollController@compute');
 Route::post('/payroll', 'PayrollController@calculate');
+
+// -- email
+Route::get('/sendemail', 'SendEmailController@index');
+Route::post('/sendemail/send', 'SendEmailController@send');
 
 
 
