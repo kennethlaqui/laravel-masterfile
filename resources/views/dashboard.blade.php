@@ -57,6 +57,14 @@ class="img-fluid rounded-circle">
                 <li><a href="#">Leave</a></li>
             </ul>
         </li>
+        <li>
+            <a href="#sendemail" aria-expanded="false" data-toggle="collapse">
+                <i class="fa fa-bar-chart"></i>Feedback</a>
+            <ul id="sendemail" class="collapse list-unstyled ">
+                <li><a href="{{ route('sendemail.index') }}">Email</a></li>
+                <li><a href="#">SMS</a></li>
+            </ul>
+        </li>
     </ul>
 </div>
 <div class="admin-menu">

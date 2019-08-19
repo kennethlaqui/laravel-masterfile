@@ -48,10 +48,12 @@ Route::get('/payroll', 'PayrollController@compute');
 Route::post('/payroll', 'PayrollController@calculate');
 
 // -- email
-Route::get('/sendemail', 'SendEmailController@index');
+Route::get('/sendemail', 'SendEmailController@index')->name('sendemail.index');
 Route::post('/sendemail/send', 'SendEmailController@send');
 
-
+// -- sms
+Route::get('/sms', 'SmsController@index');
+Route::post('/sms', 'SmsController@send');
 
 // -- Manual adding of routes
 // Route::get('/projects', 'ProjectController@index');
