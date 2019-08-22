@@ -12,7 +12,7 @@ use c_pm_generic;
 class PayrollController extends Controller
 {
 
-    public function compute(){
+    public function index(){
 
         return view('payroll.compute');
 
@@ -25,10 +25,6 @@ class PayrollController extends Controller
         $mrate___ = $request->input('mrate___');
         $day_type = $request->input('day_type');
 
-        if (!Schema::hasTable('pims.l_day_type')) {
-            dd('not exist');
-        }
-
         $rate = DB::table('pims.l_day_type')
         ->where('cntrl_no', $day_type)
         ->value('reg_rate');
@@ -40,14 +36,17 @@ class PayrollController extends Controller
 
         $daily = $drate___ * $rate;
 
-        echo $daily;
+        // echo $daily;
 
         // -- get daily rate
         $drate___ = $mrate___ * 12 / 313;
 
-        dd(number_format($drate___,2));
-        echo $drate___ + 1;
+        // dd(number_format($drate___,2));
+        // echo $drate___ + 1;
+        // return view(payroll.compute, compact($drate___));
+        // return back()->with('drate___', $drate___);
         // return view('payroll.calculate', compact($daily));
+        return response()->json(['return' => $drate___]);
 
     }
 

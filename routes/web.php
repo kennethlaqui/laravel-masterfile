@@ -44,16 +44,20 @@ Route::resource('employees', 'EmployeeController')->middleware('auth');
 
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 
-Route::get('/payroll', 'PayrollController@compute');
-Route::post('/payroll', 'PayrollController@calculate');
+Route::get('/payroll', 'PayrollController@index');
+Route::post('/payroll/post', 'PayrollController@calculate');
 
 // -- email
 Route::get('/sendemail', 'SendEmailController@index')->name('sendemail.index');
 Route::post('/sendemail/send', 'SendEmailController@send');
 
 // -- sms
-Route::get('/sms', 'SmsController@index');
+Route::get('/sms', 'SmsController@index')->name('sms.index');
 Route::post('/sms', 'SmsController@send');
+
+// -- sss -> payroll directory
+Route::get('/sss', 'Payroll_dir\PayrollDirectoryController@index');
+Route::get('/sss/{id}', 'Payroll_dir\PayrollDirectoryController@getAjax');
 
 // -- Manual adding of routes
 // Route::get('/projects', 'ProjectController@index');

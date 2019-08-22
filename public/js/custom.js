@@ -35,9 +35,61 @@ $(document).ready(function() {
         // buttons: [ 'copy', 'excel, ', 'pdf', 'colvis', 'print' ]
 
     } );
+
+
+    var payr_dir = $('#payr_dir').DataTable({
+        orderCellsTop: true,
+        fixedHeader: true,
+        select:         true,
+        deferRender:    true,
+        scrollY:        200,
+        scrollX:        true,
+        scrollCollapse: true,
+        scroller:       true,
+
+    });
+
+    var payr_dtl = $('#payr_dtl').DataTable({
+        orderCellsTop: true,
+        fixedHeader: true,
+        select:         true,
+        deferRender:    true,
+        scrollY:        200,
+        scrollX:        true,
+        scrollCollapse: true,
+        scroller:       true,
+
+    });
+
+    $('#payr_dir tbody').on( 'click', 'tr', function () {
+        var cntrl_no = payr_dir.row( this ).data()[0];
+        $.ajax({
+        url: 'sss/{id}',
+        type: 'GET',
+        data: { id: cntrl_no },
+        dataType: 'json',
+        success: function(response)
+        {
+            console.log(response);
+            var event_data = '';
+            $.each( function(index, value){
+                alert( index + ": " + value );
+                // event_data += '<tr>';
+                // event_data += '<td>'+value.cntrl_no+'</td>';
+                // event_data += '<td>'+value.appl_prd+'</td>';
+                // event_data += '</tr>';
+            });
+            $("#payr_dtl").append(event_data);
+            console.log(event_data);
+        }
+    });
+} );
+
+
     // table.buttons().container()
     //     .appendTo( '.col-md-6:eq(0)' );
 } );
+
 
 // function checkBox(){
 

@@ -62,7 +62,7 @@ class="img-fluid rounded-circle">
                 <i class="fa fa-bar-chart"></i>Feedback</a>
             <ul id="sendemail" class="collapse list-unstyled ">
                 <li><a href="{{ route('sendemail.index') }}">Email</a></li>
-                <li><a href="#">SMS</a></li>
+                <li><a href="{{ route('sms.index') }}">SMS</a></li>
             </ul>
         </li>
     </ul>
