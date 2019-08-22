@@ -48,6 +48,7 @@
                     <tr>
                         <th class="text-center" scope="col">Control #</th>
                         <th class="text-center" scope="col">ApplPrd</th>
+                        <th class="text-center" scope="col">ApplPrdxgit</th>
                         {{-- <th class="text-center" scope="col">Year</th>
                         <th class="text-center" scope="col">Month</th>
                         <th class="text-center" scope="col">Part</th>
