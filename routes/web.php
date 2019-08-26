@@ -56,8 +56,15 @@ Route::get('/sms', 'SmsController@index')->name('sms.index');
 Route::post('/sms', 'SmsController@send');
 
 // -- sss -> payroll directory
-Route::get('/sss', 'Payroll_dir\PayrollDirectoryController@index');
-Route::get('/sss/{id}', 'Payroll_dir\PayrollDirectoryController@getAjax');
+Route::get('/sss', 'Payroll_dir\PayrollDirectoryController@index')->name('sss');
+// Route::get('/sss/{appl_prd}', 'Payroll_dir\PayrollDirectoryController@getAjax');
+// Route::get('/sss', ['as'=>'get.data','uses'=>'Payroll_dir\PayrollDirectoryController@getAjax']);
+Route::get('sss/{id}','Payroll_dir\PayrollDirectoryController@getAjax')->name('get.data');
+Route::get('sss/print/{cntrl_no}', 'Payroll_dir\PayrollDirectoryController@search_contributaion')->name('sss_contri');
+// Route::get('sss/getdata', ['as' => 'get.data', 'uses' => 'Payroll_dir\PayrollDirectoryController@getAjax']);
+// Route::get('sss/getdata', array('as' => 'get.data', 'uses' => 'Payroll_dir\PayrollDirectoryController@getAjax'));
+// Route::controller('sss', 'Payroll_dir\PayrollDirectoryController', [
+    // 'getAjax' => 'get.data']);
 
 // -- Manual adding of routes
 // Route::get('/projects', 'ProjectController@index');

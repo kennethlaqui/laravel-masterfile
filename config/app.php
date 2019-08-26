@@ -177,6 +177,8 @@ return [
 
         Nexmo\Laravel\NexmoServiceProvider::class,
 
+        Yajra\Datatables\DatatablesServiceProvider::class,
+
     ],
 
     /*
@@ -228,6 +230,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'c_pm_generic' => App\Helpers\c_pm_generic::class,
+        'Datatables' => Yajra\Datatables\Facades\Datatables::class,
 
     ],
 

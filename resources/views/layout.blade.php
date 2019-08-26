@@ -71,7 +71,7 @@
     <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.colVis.min.js"></script>
     <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
 
-
+    @stack('scripts');
 
 
 
@@ -96,7 +96,6 @@
         $('#toggle-btn').trigger('click');
     });
 </script>
-
 
 
 </body>
