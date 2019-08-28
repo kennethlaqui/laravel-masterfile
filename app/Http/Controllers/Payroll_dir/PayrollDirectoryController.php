@@ -82,9 +82,9 @@ class PayrollDirectoryController extends Controller
         ->join('pims.l_emplpers', 'pims.l_emplpers.empl_cde', '=', 'pims.l_emplgenr.empl_cde')
         ->get();
 
-        $merged = merge([$sss_hist, $sss_contri]);
+        // $merged = merge([$sss_hist, $sss_contri]);
 
-        dd($merged);
+        // dd($merged);
         // -- endpoint
         return view('government.reports.sss_print_download', compact('sss_contri','sss_hist'));
 
