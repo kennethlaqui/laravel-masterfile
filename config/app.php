@@ -178,6 +178,7 @@ return [
         Nexmo\Laravel\NexmoServiceProvider::class,
 
         Yajra\Datatables\DatatablesServiceProvider::class,
+        RobinCSamuel\LaravelMsg91\LaravelMsg91ServiceProvider::class
 
     ],
 
@@ -231,6 +232,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'c_pm_generic' => App\Helpers\c_pm_generic::class,
         'Datatables' => Yajra\Datatables\Facades\Datatables::class,
+        'LaravelMsg91' => RobinCSamuel\LaravelMsg91\Facades\LaravelMsg91::class,
 
     ],
 

@@ -52,8 +52,9 @@ Route::get('/sendemail', 'SendEmailController@index')->name('sendemail.index');
 Route::post('/sendemail/send', 'SendEmailController@send');
 
 // -- sms
-Route::get('/sms', 'SmsController@index')->name('sms.index');
+// Route::get('/sms', 'SmsController@index')->name('sms.index');
 Route::post('/sms', 'SmsController@send');
+Route::get('/sms/msg91', 'SmsController@Msg91');
 
 // -- sss -> payroll directory
 Route::get('/sss', 'Payroll_dir\PayrollDirectoryController@index')->name('sss');
