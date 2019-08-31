@@ -52,16 +52,16 @@ Route::get('/sendemail', 'SendEmailController@index')->name('sendemail.index');
 Route::post('/sendemail/send', 'SendEmailController@send');
 
 // -- sms
-// Route::get('/sms', 'SmsController@index')->name('sms.index');
+Route::get('/sms', 'SmsController@index')->name('sms.index');
 Route::post('/sms', 'SmsController@send');
-Route::get('/sms/msg91', 'SmsController@Msg91');
+// Route::get('/sms/msg91', 'SmsController@Msg91');
 
 // -- sss -> payroll directory
 Route::get('/sss', 'Payroll_dir\PayrollDirectoryController@index')->name('sss');
 // Route::get('/sss/{appl_prd}', 'Payroll_dir\PayrollDirectoryController@getAjax');
 // Route::get('/sss', ['as'=>'get.data','uses'=>'Payroll_dir\PayrollDirectoryController@getAjax']);
-Route::get('sss/{id}','Payroll_dir\PayrollDirectoryController@getAjax')->name('get.data');
-Route::get('sss/print/{cntrl_no}', 'Payroll_dir\PayrollDirectoryController@search_contributaion')->name('sss_contri');
+Route::get('sss/{appl_prd}','Payroll_dir\PayrollDirectoryController@getAjax')->name('get.data');
+Route::get('sss/print/{payr_dir}', 'Payroll_dir\PayrollDirectoryController@search_contributaion')->name('sss_contri');
 // Route::get('sss/getdata', ['as' => 'get.data', 'uses' => 'Payroll_dir\PayrollDirectoryController@getAjax']);
 // Route::get('sss/getdata', array('as' => 'get.data', 'uses' => 'Payroll_dir\PayrollDirectoryController@getAjax'));
 // Route::controller('sss', 'Payroll_dir\PayrollDirectoryController', [

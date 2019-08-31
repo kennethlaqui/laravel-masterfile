@@ -136,8 +136,8 @@
 
                 });
                 $.ajax({
-                    url : 'sss/print/{cntrl_no}',
-                    data : { cntrl_no : arr },
+                    url : 'sss/print/{payr_dir}',
+                    data : { payr_dir : arr },
                 });
 
             });
