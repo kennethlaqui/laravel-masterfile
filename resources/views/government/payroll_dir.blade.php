@@ -18,7 +18,7 @@
             <table id="payr_dir" class="table table-striped table-bordered dt-body-nowrap"  style="width:100%" >
                 <thead>
                     <tr>
-                        <th class="text-center" scope="col" id="user_id">ApplPrd</th>
+                        <th class="text-center" scope="col">ApplPrd</th>
                         <th class="text-center" scope="col">Control #</th>
                         <th class="text-center" scope="col">Year</th>
                         <th class="text-center" scope="col">Month</th>
@@ -29,7 +29,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {{-- @foreach ($payr_dir as $row)
+                    @foreach ($payr_dir as $row)
                     <tr class="clickable-row">
                         <td class="text-center"  scope="row">{{ $row->appl_prd }}</td>
                         <td class="text-center"  scope="row">{{ $row->cntrl_no }}</td>
@@ -40,7 +40,7 @@
                         <td class="text-center"  scope="row">{{ $row->strt_dte }}</td>
                         <td class="text-center"  scope="row">{{ $row->last_dte }}</td>
                     </tr>
-                    @endforeach --}}
+                    @endforeach
                 </tbody>
             </table>
 
@@ -61,13 +61,17 @@
                 <tbody>
                 </tbody>
             </table>
-            <button id="process">Process</button>
+        </br>
+            <div class="form-group">
+                <button class="btn btn-primary" id="process">Process</button>
+            </div>
         </div>
     </div>
 
 
     </div>
 </div>
+
 
 @endsection
 
@@ -79,29 +83,33 @@
         var payr_dir = $('#payr_dir').DataTable({
             orderCellsTop:  true,
             fixedHeader:    true,
-            select:         true,
+            select:         {
+                style: 'single'
+            },
             deferRender:    true,
             scrollY:        200,
             scrollX:        true,
             scrollCollapse: true,
             scroller:       true,
-            cache:          false,
-            processing:     true,
-            serverSide:     true,
-            ajax: "{{ route('sss') }}",
-            columns: [
-                { "data": "appl_prd" },
-                { "data": "cntrl_no" },
-                { "data": "year____" },
-                { "data": "month___" },
-                { "data": "part____" },
-                { "data": "seqn_num" },
-                { "data": "strt_dte" },
-                { "data": "last_dte" }
-            ]
+            // cache:          false,
+            // processing:     true,
+            // serverSide:     true,
+            // ajax: "{{ route('sss') }}",
+            // columns: [
+            //     { "data": "appl_prd" },
+            //     { "data": "cntrl_no" },
+            //     { "data": "year____" },
+            //     { "data": "month___" },
+            //     { "data": "part____" },
+            //     { "data": "seqn_num" },
+            //     { "data": "strt_dte" },
+            //     { "data": "last_dte" }
+            // ]
         });
         $('#payr_dir tbody').on( 'click', 'tr', function () {
-            var appl_prd = payr_dir.row( this ).data()['appl_prd'];
+            // -- use this if you referring to json file. Json is object notation not array notation.
+            // var appl_prd = payr_dir.row( this ).data()['appl_prd'];
+            var appl_prd = payr_dir.row( this ).data()[0];
             var payr_dir_dtls = $('#payr_dir_dtls').DataTable({
                 orderCellsTop:  true,
                 fixedHeader:    true,
@@ -129,6 +137,7 @@
                     { "data": "last_dte" }
                 ]
             });
+            console.log(appl_prd);
             $('#process').click(function () {
                 var arr = [];
                 $.each(payr_dir_dtls.rows('.selected').data(), function() {
@@ -138,11 +147,15 @@
                 $.ajax({
                     url : 'sss/print/{payr_dir}',
                     data : { payr_dir : arr },
+                    dataType : 'html',
+                    async : false,
+                    success : function(data){
+                        console.log(data);
+                         $('#container').html(data);
+                    }
                 });
 
             });
-
-
         });
 
 
@@ -150,6 +163,16 @@
     });
 
 </script>
+  {{-- // $.ajaxSetup({
+    //     headers: {
+    //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    //     }
+    // });
+    // $.ajax({
+    //     url : 'sss/print/{payr_dir}',
+    //     data : { payr_dir : arr },
+    // }); --}}
+
 {{-- var rowData = payr_dir_dtls.row( this ).data();
 $.each($(rowData),function(key,value){
     arr.push(value["cntrl_no"]); //"name" being the value of your first column.

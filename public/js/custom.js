@@ -37,6 +37,8 @@ $(document).ready(function() {
     } );
 
 
+
+
     // var payr_dir = $('#payr_dir').DataTable({
     //     orderCellsTop: true,
     //     fixedHeader: true,

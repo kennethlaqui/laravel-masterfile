@@ -68,6 +68,17 @@ class="img-fluid rounded-circle">
     </ul>
 </div>
 <div class="admin-menu">
+    <h5 class="sidenav-heading">Payroll</h5>
+    <ul id="side-admin-menu" class="side-menu list-unstyled">
+    <li><a href="#government_report" aria-expanded="false" data-toggle="collapse">
+        <i class="fa fa-user"></i>Government Reports</a>
+        <ul id="government_report" class="collapse list-unstyled">
+            <li><a href="{{ route('sss') }}">SSS</a></li>
+        </ul>
+    </li>
+    </ul>
+</div>
+<div class="admin-menu">
     <h5 class="sidenav-heading">Maintenance</h5>
     <ul id="side-admin-menu" class="side-menu list-unstyled">
 
@@ -86,8 +97,7 @@ class="img-fluid rounded-circle">
                 <div class="navbar-holder d-flex align-items-center justify-content-between">
                     <div class="navbar-header"><a id="toggle-btn" href="#" class="menu-btn"><i class="icon-bars">
                             </i></a><a href="index.html" class="navbar-brand">
-                            <div class="brand-text d-none d-md-inline-block"><span>Bootstrap </span><strong
-                                    class="text-primary">Dashboard</strong></div>
+                            <div class="brand-text d-none d-md-inline-block"><span>Virtual Logic Inc. </span>
                         </a></div>
 
                 </div>
