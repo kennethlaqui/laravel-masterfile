@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+use PDF;
 
 class SssController extends Controller
 {
@@ -43,6 +44,9 @@ class SssController extends Controller
         ->toArray();
 
         return view('government.reports.sss_print_download', compact('sss_contri'));
+
+        // $pdf = PDF::loadView('government.reports.tables_only', compact('sss_contri'));
+        // return $pdf->download('sss_contribution.pdf');
 
     }
 }

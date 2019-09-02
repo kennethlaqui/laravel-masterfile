@@ -1,12 +1,20 @@
 <?php
 
-namespace App\Http\Controllers\Payroll_dir;
+// -- use namespace if the controller is in different folder
+namespace App\Http\Controllers\Payroll_directory;
+
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use DB;
+use Illuminate\Support\Facades\DB;
 
 class PayrollDirectoryController extends Controller
 {
+
+    public function index()
+    {
+
+    }
+
     public function payroll_dir_header()
     {
 
@@ -15,11 +23,10 @@ class PayrollDirectoryController extends Controller
                  'q_payr_dir.month___', 'q_payr_dir.part____', 'q_payr_dir.seqn_num',
                  'q_payr_dir.strt_dte', 'q_payr_dir.last_dte')
         ->get();
-
         // if (request()->ajax()) {
         //     return datatables($payr_dir)->toJson();
         // }
-        return view('government.payroll_dir', compact('payr_dir'));
+        return view('government.sss_coverage', compact('payr_dir'));
     }
 
     public function payroll_dir_details($appl_prd)
@@ -41,7 +48,7 @@ class PayrollDirectoryController extends Controller
             return datatables($result)->toJson();
         }
 
-        return view('government.payroll_dir');
+        // return view('government.sss_coverage');
 
     }
 

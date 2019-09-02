@@ -70,6 +70,17 @@ class="img-fluid rounded-circle">
 <div class="admin-menu">
     <h5 class="sidenav-heading">Payroll</h5>
     <ul id="side-admin-menu" class="side-menu list-unstyled">
+    <li><a href="#payroll_param" aria-expanded="false" data-toggle="collapse">
+        <i class="fa fa-user"></i>Payroll Parameters</a>
+        <ul id="payroll_param" class="collapse list-unstyled">
+            <li><a href="#">Defined Payroll</a></li>
+            <li><a href="#">Salaries</a></li>
+            <li><a href="#">Other Income</a></li>
+            <li><a href="#">One Time Income</a></li>
+            <li><a href="#">Other Deduction</a></li>
+            <li><a href="#">One Time Deduction</a></li>
+        </ul>
+    </li>
     <li><a href="#government_report" aria-expanded="false" data-toggle="collapse">
         <i class="fa fa-user"></i>Government Reports</a>
         <ul id="government_report" class="collapse list-unstyled">

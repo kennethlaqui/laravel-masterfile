@@ -141,7 +141,7 @@ $(document).ready(function() {
         // scrollCollapse: true,
         // scroller:       true,
     });
-    // sss_download.column( 4 ).data().sum())
+
 });
 
 </script>
