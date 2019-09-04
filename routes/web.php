@@ -64,7 +64,7 @@ Route::get('/sss/{appl_prd}','Payroll_directory\PayrollDirectoryController@payro
 Route::get('/sss/print/{payr_dir}', 'SssController@search_contributaion')->name('sss_contri');
 
 // -- print
-Route::get('/print', 'PrintController@index');
+Route::post('/sss/print', 'PrintController@print_data')->name('sss.print');
 
 // -- testing invoice
 Route::get('/invoice', function(){
