@@ -115,7 +115,6 @@
                 var arr = [];
                 $.each(payr_dir_dtls.rows('.selected').data(), function() {
                     arr.push(this["cntrl_no"]);
-
                 });
                 $.ajax({
                     url : 'sss/print/{payr_dir}',
@@ -123,8 +122,11 @@
                     dataType : 'html',
                     async : false,
                     success : function(data){
-                        console.log(data);
-                         $('#container').html(data);
+                        // -- open new tab
+                        // window.open(this.url);
+                        // -- direct to build html
+                        // ('#container').html(data);
+                        // windows.location.assign(url);
                     }
                 });
 
