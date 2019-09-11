@@ -19,6 +19,8 @@ class SssController extends Controller
         // -- return is array
         $payr_dir = $request->get('payr_dir');
 
+        // dd($payr_dir);
+
         // -- data for printing/download
         // -- instead of foreach, We used whereIn clause to loop the array variable
         $sss_contri = DB::table('s_empl_mst', 'l_emplgovn', 'l_emplgenr', 'l_emplpers', 'q_sss_hist')
@@ -43,10 +45,10 @@ class SssController extends Controller
         ->get()
         ->toArray();
 
-        return view('government.reports.sss_print_download', compact('sss_contri'));
+        // return view('government.reports.sss_print_download_bkp', compact('sss_contri'));
 
-        // $pdf = PDF::loadView('government.reports.tables_only', compact('sss_contri'));
-        // return $pdf->download('sss_contribution.pdf');
-
+        $pdf = PDF::loadView('government.reports.sss_print_download', compact('sss_contri'));
+        // return $pdf->stream();
+        return $pdf->download('sss_contribution.pdf');
     }
 }
