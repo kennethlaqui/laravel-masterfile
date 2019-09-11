@@ -56,18 +56,6 @@
                         @endforeach
                     </tbody>
                 </table>
-                <div class="form-group">
-                    <form action="{{ route('sss.print') }}" method="post">
-                        @csrf
-                        @foreach ($sss_contri as $contribution)
-                            <input type="hidden" name="data[]" value="{{ $contribution->sss_numb }}">
-                            {{-- <input type="hidden" name="data[]" value="{{ $contribution->last_nme }}"> --}}
-                        @endforeach
-
-                        <input type="submit" value="Print">
-                    </form>
-                {{-- <a href="{{ action('PrintController@print_data', $sss_contri) }}">Print</button> --}}
-                </div>
             </div>
         </div>
 
@@ -144,7 +132,7 @@ $(document).ready(function() {
         order: [ 1, 'asc' ],
         dom: 'Bfrtip',
         buttons: [
-            'copy', 'csv', 'excel', 'pdf', 'print'
+            'copy', 'csv', 'excel'
         ],
 
 

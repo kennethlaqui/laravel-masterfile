@@ -17,7 +17,7 @@
             {{-- call payroll directory --}}
             @include('payroll_directory.payroll_directory_header')
 
-        </br>
+        <br>
             <table id="payr_dir_dtls" class="table table-striped table-bordered dt-body-nowrap"  style="width:100%" >
                 <thead>
                     <tr>
@@ -34,9 +34,10 @@
                 <tbody>
                 </tbody>
             </table>
-        </br>
+        <br>
             <div class="form-group">
-                <button class="btn btn-primary" id="process">Process</button>
+                <button class="btn btn-primary" id="sss_view">View</button>
+                <button class="btn btn-primary" id="sss_print_download">Print / Download</button>
             </div>
         </div>
     </div>
@@ -111,7 +112,27 @@
                 ]
             });
             console.log(appl_prd);
-            $('#process').click(function () {
+            $('#sss_view').click(function () {
+                var arr = [];
+                $.each(payr_dir_dtls.rows('.selected').data(), function() {
+                    arr.push(this["cntrl_no"]);
+                });
+                $.ajax({
+                    url : 'sss/view/{payr_dir}',
+                    data : { payr_dir : arr },
+                    dataType : 'html',
+                    async : false,
+                    success : function(data){
+                        // -- open new tab
+                        // window.open(this.url);
+                        // -- direct to build html
+                        $('#container').html(data);
+                        // windows.location.assign(url);
+                    }
+                });
+
+            });
+            $('#sss_print_download').click(function () {
                 var arr = [];
                 $.each(payr_dir_dtls.rows('.selected').data(), function() {
                     arr.push(this["cntrl_no"]);
@@ -123,7 +144,7 @@
                     async : false,
                     success : function(data){
                         // -- open new tab
-                        // window.open(this.url);
+                        window.open(this.url);
                         // -- direct to build html
                         // ('#container').html(data);
                         // windows.location.assign(url);

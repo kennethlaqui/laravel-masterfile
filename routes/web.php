@@ -61,18 +61,18 @@ Route::post('/sms', 'SmsController@send');
 Route::get('/sss', 'Payroll_directory\PayrollDirectoryController@payroll_dir_header')->name('sss');
 // -- sss - display cut off
 Route::get('/sss/{appl_prd}','Payroll_directory\PayrollDirectoryController@payroll_dir_details');
-Route::get('/sss/print/{payr_dir}', 'SssController@search_contributaion')->name('sss_contri');
-
-// -- print
-Route::post('/sss/print', 'PrintController@print_data')->name('sss.print');
+// -- sss - View Contribution
+Route::get('/sss/view/{payr_dir}', 'SssController@search_contribution_view')->name('sss_contri');
+// -- sss - Print / Download
+Route::get('sss/print/{payr_dir}', 'SssController@search_contribution_print_download');
 
 // -- testing invoice
-Route::get('/invoice', function(){
-    // return view('print.print');
+// Route::get('/invoice', function(){
+//     // return view('print.print');
 
-    $pdf = PDF::loadView('print.print');
-    return $pdf->download('invoice.pdf');
-});
+//     $pdf = PDF::loadView('print.print');
+//     return $pdf->download('invoice.pdf');
+// });
 // -- Manual adding of routes
 // Route::get('/projects', 'ProjectController@index');
 //
